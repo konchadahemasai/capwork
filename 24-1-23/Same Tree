@@ -1,0 +1,39 @@
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        List<Integer> arr=new ArrayList<>();
+        List<Integer> arr1=new ArrayList<>();
+        postorder(p,arr);
+        postorder1(q,arr1);
+        if(arr.equals(arr1)==true){
+            return true;
+        }
+        return false;
+        
+    }
+    public void postorder(TreeNode p,List<Integer> arr){
+        if(p==null){
+             arr.add(0);
+            return;
+        }
+        
+        postorder(p.left,arr);   
+        postorder(p.right,arr);
+        arr.add(p.val);
+        
+        
+        
+    }
+     public void postorder1(TreeNode q,List<Integer> arr1){
+        if(q==null){
+            arr1.add(0);
+            return;
+        }
+        
+        postorder1(q.left,arr1);   
+        postorder1(q.right,arr1);
+        arr1.add(q.val);
+        
+        
+        
+    }
+}
