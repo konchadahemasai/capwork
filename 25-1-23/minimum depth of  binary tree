@@ -1,0 +1,24 @@
+class Solution {
+    public int minDepth(TreeNode root) {
+        if(root==null){
+            return 0;
+        }
+        int Left=minDepth(root.left);
+        int Right=minDepth(root.right);
+        if(Left==0){
+            return 1+Right;
+        }
+        if(Right==0){
+            return 1+Left;
+        }
+        if(Left<Right){
+            return Left+1;
+        }
+        return Right+1;
+        
+        
+    }
+    
+        
+    
+}
