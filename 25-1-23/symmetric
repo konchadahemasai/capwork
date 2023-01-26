@@ -1,0 +1,39 @@
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+         List<Integer> arr=new ArrayList<>();
+         List<Integer> arr1=new ArrayList<>();
+         if(root==null)
+           return true;
+        postorder(root.left,arr);
+        postorder1(root.right,arr1);
+        if(arr.equals(arr1)){
+            return true;
+        }
+        return false;
+        
+    }
+     public void postorder(TreeNode root,List<Integer> arr){
+        if(root==null){
+            arr.add(-1);
+            return;
+        }
+        
+
+        postorder(root.left,arr);   
+        postorder(root.right,arr);  
+        arr.add(root.val); 
+
+     }
+     public void postorder1(TreeNode root,List<Integer> arr1){
+        if(root==null){
+            arr1.add(-1);
+            return;
+        }
+                
+
+        postorder1(root.right,arr1);   
+        postorder1(root.left,arr1); 
+        arr1.add(root.val);
+     }
+        
+}
