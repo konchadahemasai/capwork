@@ -1,0 +1,53 @@
+class Solution {
+    public int maxLevelSum(TreeNode root) {
+        List<List<Integer>> main=new ArrayList<List<Integer>>();
+        List<Integer> arr=new ArrayList<>();
+        if(root==null){
+            return 0;
+        }
+        Queue<TreeNode> queue=new LinkedList<>();
+        arr.add(root.val);
+        main.add(arr);
+        queue.add(root);
+        while(queue.size()!=0){
+            List<Integer> arr1=new ArrayList<>();
+            int size=queue.size();
+            for(int i=1;i<=size;i++){
+                TreeNode out=queue.poll();
+                if(out.left!=null){
+                    arr1.add(out.left.val);
+                    queue.add(out.left);
+                }
+                if(out.right!=null){
+                    arr1.add(out.right.val);
+                    queue.add(out.right);
+                    
+                }
+                
+            }
+            if(queue.size()!=0){
+           
+                main.add(arr1);
+            }
+        }
+        int ind=0;
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<main.size();i++){
+            int sum=0;
+            
+            for(int j=0;j<main.get(i).size();j++){
+                sum=sum+main.get(i).get(j);
+               
+            }
+             if(sum>max){
+                    max=sum;
+                 ind=i;}
+            
+                
+        }
+        
+        return ind+1;
+    }    
+        
+    
+}
