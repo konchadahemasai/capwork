@@ -1,0 +1,16 @@
+class Solution {
+    public TreeNode convertBST(TreeNode root) {
+        great(root);
+        return root;
+        
+    }
+    int sum=0;
+    public void great(TreeNode root){
+        if(root==null)
+            return;
+        great(root.right);
+        root.val=root.val+sum;
+        sum=root.val;
+        great(root.left);
+    }
+}
