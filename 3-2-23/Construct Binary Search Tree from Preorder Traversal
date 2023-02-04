@@ -1,0 +1,17 @@
+class Solution {
+    public TreeNode bstFromPreorder(int[] preorder) {
+        int upper=Integer.MAX_VALUE;
+        return create(preorder,upper,new int[] {0});
+        
+    }
+    public TreeNode create(int[] preorder,int upper,int [] curr){
+        if(curr[0]==preorder.length)
+            return null;
+        if(preorder[curr[0]]>upper)
+            return null;
+        TreeNode node=new TreeNode(preorder[curr[0]++]);
+        node.left=create(preorder,node.val,curr);
+        node.right=create(preorder,upper,curr);
+        return node;
+    }
+}
